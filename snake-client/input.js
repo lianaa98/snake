@@ -1,3 +1,5 @@
+const keys = require('./constants').keys;
+
 let connection;
 
 const setupInput = function(conn) {
@@ -15,23 +17,9 @@ const handleUserInput = function(data) {
   if (data === '\u0003') {
     process.exit();
   }
-  if (data === 't') {
-    connection.write("Say: make way make way!");
-  }
-  if (data === 'w') {
-    connection.write('Move: up');
-  }
-  if (data === 's') {
-    connection.write('Move: down');
-  }
-  if (data === 'a') {
-    connection.write('Move: left');
-  }
-  if (data === 'd') {
-    connection.write('Move: right');
+  if (Object.keys(keys).includes(data)) {
+    connection.write(keys[data]);
   }
 };
-
-
 
 module.exports = setupInput;
