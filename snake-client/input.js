@@ -1,6 +1,6 @@
 let connection;
 
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -15,6 +15,9 @@ const handleUserInput = function(data) {
   if (data === '\u0003') {
     process.exit();
   }
+  if (data === 't') {
+    connection.write("Say: make way make way!");
+  }
   if (data === 'w') {
     connection.write('Move: up');
   }
@@ -27,7 +30,8 @@ const handleUserInput = function(data) {
   if (data === 'd') {
     connection.write('Move: right');
   }
+};
 
-}
+
 
 module.exports = setupInput;
